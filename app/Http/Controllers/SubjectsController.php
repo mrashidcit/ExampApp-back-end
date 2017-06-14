@@ -26,6 +26,18 @@ class SubjectsController extends Controller
         return response()->json($response, 200);
     }
 
+    public function getSubjectsofOneGrade($id){
+        $subjects = Subject::where('class_id', $id)
+                        ->get();
+
+        $response = [
+            'subjects' => $subjects
+        ];
+
+        return response()->json($response, 200);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

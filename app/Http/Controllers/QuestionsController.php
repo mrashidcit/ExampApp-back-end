@@ -23,6 +23,22 @@ class QuestionsController extends Controller
         return response()->json($response, 200);
     }
 
+
+    public function getQuestionsList($id){
+
+       
+       
+       $questions = Question::where('subject_id', $id)
+                        ->get();
+
+        $response = [
+            'questions' => $questions
+        ];
+
+        return response()->json($response, 200);
+       
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -94,7 +110,27 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+
+        
+
+        $question->question = $request['question'];
+        $question->a = $request['a'];
+        $question->b = $request['b'];
+        $question->c = $request['c'];
+        $question->d = $request['d'];
+        $question->correct_option = $request['correct_option'];
+
+        $question->save();
+
+        $response = [
+            'question' => $question
+
+        ];
+
+        return response()->json($response, 200);
+        
+        
     }
 
     /**

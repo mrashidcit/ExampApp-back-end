@@ -17,6 +17,17 @@ use Illuminate\Http\Request;
     return $request->user();
 })->middleware('auth:api');
 */
+
+Route::get('/subjects/oneGrade/{id}', [
+    'uses' => 'SubjectsController@getSubjectsofOneGrade',
+    'as' => 'subjects.oneGrade'
+]);
+
+Route::get('/questions/question-list/{id}', [
+    'uses' => 'QuestionsController@getQuestionsList',
+    'as' => 'questions.list'
+]);
+
 Route::resource('classes', 'ClassesController');
 
 
