@@ -37,3 +37,8 @@ Route::resource('subjects', 'SubjectsController');
 
 Route::resource('questions', 'QuestionsController');
 
+
+Route::resource('authenticate', 'AuthenticateController', [
+    'only' => ['index']
+]);
+Route::post('authenticate', 'AuthenticateController@authenticate');

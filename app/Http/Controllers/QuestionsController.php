@@ -29,7 +29,10 @@ class QuestionsController extends Controller
        
        
        $questions = Question::where('subject_id', $id)
+                        ->inRandomOrder()
+                        ->take(10)
                         ->get();
+                        //->paginate(10);
 
         $response = [
             'questions' => $questions
