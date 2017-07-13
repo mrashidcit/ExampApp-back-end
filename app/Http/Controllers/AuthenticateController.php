@@ -29,7 +29,7 @@ class AuthenticateController extends Controller
     public function authenticate(Request $request){
 
         $credentials = $request->only('email', 'password');
-        $access = "false";
+        $allowAccess = "false";
 
         //return response()->json(compact('credentials'));
 
@@ -38,7 +38,9 @@ class AuthenticateController extends Controller
 
             if(! $token = JWTAuth::attempt($credentials)){
                 return response()
-                    ->json(['error' => 'invalid_credentials'], 401);
+                    ->json(['error' => 'invalid_credentials',
+                            'allowAccess' => 'false'
+                    ], 401);
             }
         } catch(JWTException $e){
             // something went wrong
@@ -46,9 +48,9 @@ class AuthenticateController extends Controller
                 ->json(['error' => 'could_not_create_token'], 500);
         }
 
-        $access = 'true';
+        $allowAccess = 'true';
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token', 'access'));
+        return response()->json(compact('token', 'allowAccess'));
 
     }
 }
