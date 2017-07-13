@@ -37,6 +37,10 @@ Route::resource('subjects', 'SubjectsController');
 
 Route::resource('questions', 'QuestionsController');
 
+Route::resource('boards', 'BoardController');
+
+Route::resource('years', 'YearController');
+
 
 Route::resource('authenticate', 'AuthenticateController', [
     'only' => ['index']

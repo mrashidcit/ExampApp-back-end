@@ -20,7 +20,6 @@ class QuestionsController extends Controller
             'questions' => $questions
         ];
 
-        return "hello";
 
         return response()->json($response, 200);
     }

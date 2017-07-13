@@ -20,5 +20,12 @@ class DatabaseSeeder extends Seeder
         // Questions seeder must be called After Above Two TableSeeders
         $this->call(QuestionsTableSeeder::class);
 
+        // Boards table
+        $this->call(BoardsTableSeeder::class);
+
+        // Years table
+        $this->call(YearsTableSeeder::class);
+
+
     }
 }
