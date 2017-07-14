@@ -17,6 +17,7 @@ class Subject extends Model
     public function Questions(){
         return $this->hasMany('App\Question', 'subject_id');
     }
+    
 
 
     // Belongs to One Class

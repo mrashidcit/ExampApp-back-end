@@ -64,6 +64,9 @@ class QuestionsController extends Controller
         $subject_id = $request['subject_id'];
 
         $question = Question::create([
+            'board_id' => $request['board_id'],
+            'year_id' => $request['year_id'],
+            'class_id' => $request['class_id'],
             'subject_id' => $request['subject_id'],
             'question' => $request['question'],
             'a' => $request['a'],
