@@ -14,7 +14,7 @@ class YearController extends Controller
      */
     public function index()
     {
-        $years = Year::all();
+        $years = Year::find([4, 5]);
 
         $response = [
             'years' => $years
