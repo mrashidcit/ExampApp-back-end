@@ -17,7 +17,8 @@ class PhotoController extends Controller
         $url = Storage::url('public/2nd.png');
         $size = Storage::lastModified('public/2nd.png');
 
-        return $size;
+        return view('showphoto');
+        //echo asset('storage/first.png');
     }
 
     /**
@@ -38,14 +39,31 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        if(!$request->hasFile('photo')){
+        $files = $request->file('photo');
 
-            return "file is not there";
+
+
+
+        foreach ($files as $file){
+            if(!$request->hasFile('photo')){
+
+                // there is no file anymore
+                break;
+            }
+            $name =  str_random(12);
+            $ext = $file->extension();
+
+            $path = $file->storeAs('public/', $name . "." . $ext);
+            echo $path . "<br>";
         }
 
+        return "true";
 
 
-        $path = $request->photo->storeAs('public/', '2nd.png');
+        $name = $request->photo->hashName();
+
+        $path = $request->photo->storeAs(
+                    'public/', $name);
 
 
         echo $path ;
