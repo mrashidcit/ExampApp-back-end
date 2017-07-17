@@ -13,5 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+//    return "Hello world";
 });
+
+Route::resource('photos', 'PhotoController');
 
