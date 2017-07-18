@@ -13,7 +13,13 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel');
+        
+        
+
+        $response = $this->call('GET', '/');
+
+        $this->assertTrue(strpos($response->getContent(), 'Hello world') !== false);
+
+        
     }
 }

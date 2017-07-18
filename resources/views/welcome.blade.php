@@ -72,6 +72,7 @@
                     <a href="{{ url('/register') }}">Register</a>
                 </div>
             @endif
+            <p>Hello world</p>
 
             <div class="content">
                 <div class="title m-b-md">

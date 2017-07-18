@@ -7,7 +7,7 @@ use Closure;
 class Cors
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request. ,
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -18,7 +18,10 @@ class Cors
 
         return $next($request)
             ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Authtoorization');
+            ->header('Access-Control-Allow-Credentials', 'true')
+            ->header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Content-Type, Authorization');
+
+
     }
 }
