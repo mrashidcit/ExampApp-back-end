@@ -16,7 +16,25 @@ class OldExamController extends Controller
     {
         $exams = OldExam::all();
 
-        return view('showphoto', compact('exams'));
+        return $exams;
+    }
+
+
+    public function findByIds(Request $req){
+
+
+
+        $exams = OldExam::where([
+                    'board_id' => $req->board_id,
+                    'year_id' =>  $req->year_id,
+                    'class_id' =>  $req->class_id,
+                    'subject_id' =>  $req->subject_id,
+
+                ])->get();
+
+        return response()->json(
+                [ 'exams' => $exams ], 201);
+
     }
 
     /**

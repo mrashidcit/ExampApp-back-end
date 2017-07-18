@@ -44,6 +44,11 @@ Route::resource('years', 'YearController');
 Route::resource('oldexams', 'OldExamController');
 
 
+Route::post('/oldexam/findbyids', [
+    'uses' => 'OldExamController@findByIds',
+    'as' => 'oldexam.findbyids'
+]);
+
 Route::resource('authenticate', 'AuthenticateController', [
     'only' => ['index']
 ]);
