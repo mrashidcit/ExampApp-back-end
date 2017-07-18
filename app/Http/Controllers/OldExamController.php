@@ -55,7 +55,9 @@ class OldExamController extends Controller
      */
     public function store(Request $request)
     {
-        $files = $request->file('photo');
+
+        $files = $request->file("photos");
+
 
         echo $request->board_id  . "<br>";
         echo $request->year_id  . "<br>";
@@ -65,7 +67,7 @@ class OldExamController extends Controller
 
 
         foreach ($files as $file){
-            if(!$request->hasFile('photo')){
+            if(!$request->hasFile('photos')){
 
                 // there is no file anymore
                 break;
