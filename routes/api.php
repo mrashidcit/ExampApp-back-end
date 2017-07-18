@@ -41,6 +41,8 @@ Route::resource('boards', 'BoardController');
 
 Route::resource('years', 'YearController');
 
+Route::resource('oldexams', 'OldExamController');
+
 
 Route::resource('authenticate', 'AuthenticateController', [
     'only' => ['index']

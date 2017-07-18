@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\OldExam;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-
-class PhotoController extends Controller
+class OldExamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class PhotoController extends Controller
      */
     public function index()
     {
+        $exams = OldExam::all();
 
-        return view('showphoto');
-        //echo asset('storage/first.png');
+        return view('showphoto', compact('exams'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -39,6 +39,10 @@ class PhotoController extends Controller
     {
         $files = $request->file('photo');
 
+        echo $request->board_id  . "<br>";
+        echo $request->year_id  . "<br>";
+        echo $request->class_id  . "<br>";
+        echo $request->subject_id  . "<br>";
 
 
 
@@ -53,22 +57,20 @@ class PhotoController extends Controller
 
             $file->storeAs('public/', $name . "." . $ext);
 
-            $path = 'storage/' . $name . $ext;
-            echo $path . "<br>";
+            $fullName = 'storage/' . $name . "." . $ext;
+
+            OldExam::create([
+                'board_id' => $request->board_id,
+                'year_id' => $request->year_id,
+                'class_id' => $request->class_id,
+                'subject_id' => $request->subject_id,
+                'file_name' => $fullName,
+
+            ]);
+            echo $fullName . "<br>";
         }
 
         return "true";
-
-
-        $name = $request->photo->hashName();
-
-        $path = $request->photo->storeAs(
-                    'public/', $name);
-
-
-        echo $path ;
-
-
 
     }
 

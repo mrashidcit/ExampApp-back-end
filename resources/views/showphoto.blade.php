@@ -3,8 +3,9 @@
     
 </head>
 <body>
-<img src="{{asset('storage/first.png')}}" alt="">
-<img src="storage/first.png" alt="">
+
+<img src="{{asset('storage/29Q8FoHRGtEX.jpeg')}}" alt="">
+<img src="storage/29Q8FoHRGtEX.jpeg" alt="">
 
 </body>
 </html>
