@@ -14,8 +14,7 @@ class BoardsTableSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
-        DB::table('
-        boards')->truncate();
+        DB::table('boards')->truncate();
 
         \App\Board::create([
             'name' => 'Lahore'
